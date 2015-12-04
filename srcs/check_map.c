@@ -30,7 +30,6 @@ int valid_tetri(char *map)
 			k = 0;
 
 	}
-k
 }
 
 int check_map(char *map)

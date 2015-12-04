@@ -19,6 +19,10 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+/*
+## CHECK_MAP ##
+*/
+
 int valid_tetri(char *map);
 int check_map(char *map);
 int	parse_map(char *file);
