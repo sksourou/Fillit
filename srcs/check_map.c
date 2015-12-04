@@ -14,22 +14,34 @@
 
 int valid_tetri(char *map)
 {
+	int k;
 	int i;
-	int j;
+	int ct;
 
 	i = 0;
-	j = 20;
-
+	k = 0;
+	ct = 20;
 	while (map[i])
 	{
 		if (map[i] == '#')
 			k++;
-		else if (i = 20 && k != 4)
+		else if (i == ct && k != 4)
 			return (0);
-		else
-			k = 0;
-
+		else if (i == ct && map[i] == '\n')
+		{
+			ct += 20;
+			k = 0; 
+		}
+		// ft_putnbr(i);
+		// ft_putendl("");
+		// ft_putnbr(ct);
+		// ft_putendl("");
+		// ft_putchar(map[i]);
+		i++;
 	}
+	if (map[i] != '\0')
+		return (1);
+	return (0);
 }
 
 int check_map(char *map)
@@ -41,6 +53,7 @@ int check_map(char *map)
 	ct = 0;
 	i = 0;
 	j = 0;
+	ft_putnbr(ft_strlen(map));
 	while(map[i])
 	{
 		if (map[i] == '#' || map[i] == '.')
@@ -55,7 +68,7 @@ int check_map(char *map)
 		else	
 			return (0);
 		i++;
-		if (map[i] == '\0' && ct != 4)
+		if (map[i] == '\0' && ct != 3)
 			return (0);
 	}
 	return (1);

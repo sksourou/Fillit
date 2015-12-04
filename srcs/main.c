@@ -16,7 +16,6 @@
 
 int main(int ac, char **av)
 {
-
 	if (ac != 2 || parse_map(av[1]) == 0)
 		write(1, "error\n", 6);
 	return (0);

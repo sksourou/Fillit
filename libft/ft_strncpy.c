@@ -15,7 +15,6 @@
 char	*ft_strncpy(char *dest, char const *src, size_t n)
 {
 	unsigned int i;
-	unsigned int j
 	
 	i = ft_strlen(src);
 	if (i < n)
