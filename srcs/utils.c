@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sksourou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 16:38:34 by sksourou          #+#    #+#             */
-/*   Updated: 2015/12/04 16:38:35 by sksourou         ###   ########.fr       */
+/*   Created: 2015/12/05 17:16:11 by sksourou          #+#    #+#             */
+/*   Updated: 2015/12/05 17:16:13 by sksourou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "fillit.h"
 
-# define BUF_SIZE 500
-# include <libft.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdio.h>
+int		count_tetri(char *map)
+{
+	int i;
+	int j;
+	int ct;
 
-/*
-## CHECK_MAP ##
-*/
-
-int valid_tetri(char *map);
-int check_map(char *map);
-int	parse_map(char *file);
-int	count_tetri(char *map);
-
-
-#endif
+	i = 0;
+	ct = 21;
+	j = 0;
+	while(map[i])
+	{
+		if (i == ct)
+		{
+			j++;
+			ct += 21;
+		}
+		i++;
+	}
+	j++;
+	return (j);
+}

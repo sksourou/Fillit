@@ -11,7 +11,7 @@
 #******************************************************************************#
 NAME = fillit
 
-SRCS = srcs/main.c srcs/check_map.c
+SRCS = srcs/main.c srcs/check_map.c srcs/utils.c
 
 OBJS =		$(SRCS:.c=.o)
 

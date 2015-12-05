@@ -14,34 +14,14 @@
 
 int valid_tetri(char *map)
 {
-	int k;
+	char **tetri;
+	int nbr_tetri;
 	int i;
-	int ct;
 
-	i = 0;
-	k = 0;
-	ct = 20;
-	while (map[i])
-	{
-		if (map[i] == '#')
-			k++;
-		else if (i == ct && k != 4)
-			return (0);
-		else if (i == ct && map[i] == '\n')
-		{
-			ct += 20;
-			k = 0; 
-		}
-		// ft_putnbr(i);
-		// ft_putendl("");
-		// ft_putnbr(ct);
-		// ft_putendl("");
-		// ft_putchar(map[i]);
-		i++;
-	}
-	if (map[i] != '\0')
-		return (1);
-	return (0);
+	nbr_tetri = count_tetri(map);
+	tetri = (char **)malloc(sizeof(char *) * nbr_tetri + 1);
+	while(i =< nbr)
+	return (1);
 }
 
 int check_map(char *map)
@@ -53,7 +33,6 @@ int check_map(char *map)
 	ct = 0;
 	i = 0;
 	j = 0;
-	ft_putnbr(ft_strlen(map));
 	while(map[i])
 	{
 		if (map[i] == '#' || map[i] == '.')
@@ -86,6 +65,7 @@ int	parse_map(char *file)
 		return (0);
 	if (check_map(buff) == 0)
 		return (0);
+	//ft_putnbr(ft_strlen(buff));
 	if (valid_tetri(buff) == 0)
 		return (0);
 	return 1;
