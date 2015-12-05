@@ -19,14 +19,21 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-/*
-## CHECK_MAP ##
-*/
+typedef struct s_tetri
+{
+	int 		nbr_tetri;
+	int 		len;
+	char		**tetrimi;
+}				t_tetri;
 
-int valid_tetri(char *map);
-int check_map(char *map);
-int	parse_map(char *file);
-int	count_tetri(char *map);
+int 	valid_tetri(char *map);
+int 	check_map(char *map);
+int		parse_map(char *file);
+int		count_tetri(char *map);
+char	**stock_tetri(char *map);
+void	init(t_tetri *tetri);
+int 	valid_tetri(char *map);
+int found_diez(char *map, int i);
 
 
 #endif

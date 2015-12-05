@@ -30,6 +30,5 @@ int		count_tetri(char *map)
 		}
 		i++;
 	}
-	j++;
 	return (j);
 }

@@ -12,16 +12,48 @@
 
 #include "fillit.h"
 
+int found_diez(char *map, int i)
+{
+	if (map[i + 1] && map[i + 1] == '#')
+		return (1);
+	if (map[i + 5] && map[i + 5] == '#')
+		return (1);
+	return (0);
+}
+
 int valid_tetri(char *map)
 {
-	char **tetri;
 	int nbr_tetri;
 	int i;
+	int k;
+	int ct;
 
+	ct = 0;
+	k = 0;
+	i = 0;
 	nbr_tetri = count_tetri(map);
-	tetri = (char **)malloc(sizeof(char *) * nbr_tetri + 1);
-	while(i =< nbr)
-	return (1);
+	while(map[i])
+	{
+		if (map[i] == '#' && ct != 3)
+		{
+			ct++;
+			if (found_diez(map, i) == 1)
+				map[i] = 'V';
+			else
+				return (0);
+		}
+		else if (ct == 3 && map[i] == '#')
+		{
+			map[i] = 'V';
+			ct++;
+		}
+		else if (map[i] == '#')
+			return (0);
+		i++;
+	}
+	if (ct == 4)
+		return (1);
+	return (0);
 }
 
 int check_map(char *map)
@@ -47,15 +79,17 @@ int check_map(char *map)
 		else	
 			return (0);
 		i++;
-		if (map[i] == '\0' && ct != 3)
+		if (map[i] == '\0' && ct != 4)
 			return (0);
 	}
 	return (1);
 }
+
 int	parse_map(char *file)
 {
 	int fd;
 	char *buff;
+	t_tetri tetris;	
 
 	fd = 0;
 	if ((fd = open(file, O_RDONLY)) < 0)
@@ -65,8 +99,15 @@ int	parse_map(char *file)
 		return (0);
 	if (check_map(buff) == 0)
 		return (0);
-	//ft_putnbr(ft_strlen(buff));
-	if (valid_tetri(buff) == 0)
-		return (0);
-	return 1;
+	tetris.tetrimi = stock_tetri(buff);
+	fd = 0;
+	// ft_putstr(tetris.tetrimi[3]);
+	while (tetris.tetrimi[fd])
+	{
+		ft_putendl("nsm");
+		if (valid_tetri(tetris.tetrimi[fd]) == 0)
+			return (0);
+		fd++;
+	}
+	return (1);
 }

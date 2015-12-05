@@ -14,21 +14,22 @@
 
 void	init(t_tetri *tetri)
 {
-	tetri->len = 21;
+	tetri->len = 20;
 	tetri->nbr_tetri = 0;
 }
 
-int 	stock_tetri(char *map)
+char	**stock_tetri(char *map)
 {
 	int 	i;
 	int 	j;
 	int 	x;
 	char	**tetrimi;
-	t_tetri	tetri;
+	t_tetri tetri;
 
 	i = 0;
 	j = 0;
 	init(&tetri);
+	ft_putnbr(count_tetri(map));
 	tetrimi = (char **)malloc(sizeof(char *) * count_tetri(map));
 	while (i <= count_tetri(map))
 	{
@@ -40,8 +41,7 @@ int 	stock_tetri(char *map)
 			x++;
 			j++;
 		}
-		ft_putstr(tetrimi[i]);
 		i++;
 	}
-	return (0);
+	return (tetrimi);
 }
