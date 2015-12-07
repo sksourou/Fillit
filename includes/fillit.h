@@ -30,10 +30,10 @@ int 	valid_tetri(char *map);
 int 	check_map(char *map);
 int		parse_map(char *file);
 int		count_tetri(char *map);
-char	**stock_tetri(char *map);
-void	init(t_tetri *tetri);
+int 	**stock_tetri(char *map, t_tetri *tetris);
+void	init(t_tetri *tetri, char *map);
 int 	valid_tetri(char *map);
-int found_diez(char *map, int i);
+int 	found_diez(char *map, int i);
 
 
 #endif

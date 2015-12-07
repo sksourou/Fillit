@@ -37,16 +37,11 @@ int valid_tetri(char *map)
 		if (map[i] == '#' && ct != 3)
 		{
 			ct++;
-			if (found_diez(map, i) == 1)
-				map[i] = 'V';
-			else
+			if (found_diez(map, i) != 1)
 				return (0);
 		}
 		else if (ct == 3 && map[i] == '#')
-		{
-			map[i] = 'V';
 			ct++;
-		}
 		else if (map[i] == '#')
 			return (0);
 		i++;
@@ -99,15 +94,16 @@ int	parse_map(char *file)
 		return (0);
 	if (check_map(buff) == 0)
 		return (0);
-	tetris.tetrimi = stock_tetri(buff);
+	init(&tetris, buff);
+	stock_tetri(buff, &tetris);
 	fd = 0;
-	// ft_putstr(tetris.tetrimi[3]);
-	/*while (tetris.tetrimi[fd])
+	while (fd < tetris.nbr_tetri)
 	{
-		ft_putendl("nsm");
+		ft_putstr(tetris.tetrimi[0]);
 		if (valid_tetri(tetris.tetrimi[fd]) == 0)
 			return (0);
 		fd++;
-	}*/
+	}
+	algo();
 	return (1);
 }
