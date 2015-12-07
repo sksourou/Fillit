@@ -102,12 +102,12 @@ int	parse_map(char *file)
 	tetris.tetrimi = stock_tetri(buff);
 	fd = 0;
 	// ft_putstr(tetris.tetrimi[3]);
-	while (tetris.tetrimi[fd])
+	/*while (tetris.tetrimi[fd])
 	{
 		ft_putendl("nsm");
 		if (valid_tetri(tetris.tetrimi[fd]) == 0)
 			return (0);
 		fd++;
-	}
+	}*/
 	return (1);
 }
