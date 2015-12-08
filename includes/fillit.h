@@ -36,5 +36,7 @@ int 	valid_tetri(char *map);
 int 	found_diez(char *map, int i);
 void	algo(t_tetri tetris);
 char	*change_diez(char *new_map, char Alph);
+int 	first_line(char *new_line);
+char 	*add_new_space(char *new_map);
 
 #endif
