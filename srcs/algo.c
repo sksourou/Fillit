@@ -12,7 +12,21 @@
 
 #include "fillit.h"
 
-AA..
-AA..
-AAAA
-....
+
+void	algo(t_tetri tetris)
+{
+	char *new_map;
+	char alph;
+	int i;
+
+	i = 0;
+	alph = 'A';
+	new_map = tetris.tetrimi[0];
+	while(i < tetris.nbr_tetri)
+	{
+		if (found_best(tetris, new_map, i) != 1)
+			add_new_space(new_map);
+		else
+			i++;
+	}
+}

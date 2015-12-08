@@ -99,11 +99,10 @@ int	parse_map(char *file)
 	fd = 0;
 	while (fd < tetris.nbr_tetri)
 	{
-		ft_putstr(tetris.tetrimi[0]);
 		if (valid_tetri(tetris.tetrimi[fd]) == 0)
 			return (0);
 		fd++;
 	}
-	algo();
+	algo(tetris);
 	return (1);
 }

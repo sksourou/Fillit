@@ -32,3 +32,17 @@ int		count_tetri(char *map)
 	}
 	return (j + 1);
 }
+
+char	*change_diez(char *new_map, char Alph)
+{
+	int k;
+
+	k = 0;
+	while (new_map[k])
+	{
+		if (new_map[k] == '#')
+			new_map[k] = Alph;
+		k++;
+	}
+	return (new_map);
+}

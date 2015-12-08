@@ -34,6 +34,7 @@ int 	**stock_tetri(char *map, t_tetri *tetris);
 void	init(t_tetri *tetri, char *map);
 int 	valid_tetri(char *map);
 int 	found_diez(char *map, int i);
-
+void	algo(t_tetri tetris);
+char	*change_diez(char *new_map, char Alph);
 
 #endif
