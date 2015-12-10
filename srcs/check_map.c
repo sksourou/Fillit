@@ -37,8 +37,8 @@ int valid_tetri(char *map)
 		if (map[i] == '#' && ct != 3)
 		{
 			ct++;
-			if (found_diez(map, i) != 1)
-				return (0);
+			if (found_diez(map, i) != 1 && map[i + 3] != '#' && map[i + 4] != '#') 
+					return (0);
 		}
 		else if (ct == 3 && map[i] == '#')
 			ct++;

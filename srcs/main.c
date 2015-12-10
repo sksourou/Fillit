@@ -13,7 +13,6 @@
 #include <fillit.h>
 #include <fcntl.h>
 
-
 int main(int ac, char **av)
 {
 	if (ac != 2 || parse_map(av[1]) == 0)

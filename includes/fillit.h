@@ -26,6 +26,13 @@ typedef struct s_tetri
 	char		**tetrimi;
 }				t_tetri;
 
+
+void	check_tetri(char *new_map, char *map);
+int		tetri_cmp(char *new_map, char *map, int n);
+void	pose_up_left(char *new_map, char *map);
+int 	check_len(char *new_map);
+void	move_tetri(char *new_map);
+int		found_best(char *new_map, char *map);
 int 	valid_tetri(char *map);
 int 	check_map(char *map);
 int		parse_map(char *file);
@@ -36,6 +43,7 @@ int 	valid_tetri(char *map);
 int 	found_diez(char *map, int i);
 void	algo(t_tetri tetris);
 char	*change_diez(char *new_map, char Alph);
+char 	*add_new_space(char *new_map);
 int 	first_line(char *new_line);
 char 	*add_new_space(char *new_map);
 

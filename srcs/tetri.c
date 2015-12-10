@@ -27,7 +27,7 @@ int	**stock_tetri(char *map, t_tetri *tetri)
 	i = 0;
 	j = 0;
 	tetri->tetrimi = (char **)malloc(sizeof(char *) * count_tetri(map));
-	while (i <= count_tetri(map))
+	while (i < count_tetri(map))
 	{
 		x = 0;
 		tetri->tetrimi[i] = (char *)malloc(sizeof(char) * 20);

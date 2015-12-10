@@ -12,11 +12,13 @@
 
 #include "fillit.h"
 
-int 	check_tetri(char *new_map, int i)
+int 	check_len(char *new_map)
 {
 	int	j;
 	int	x;
+	int	i;
 
+	i = 0;
 	x = 0;
 	j = i;
 	while (new_map[j] == '#')
@@ -42,13 +44,37 @@ void	move_tetri(char *new_map)
 	j = 0;
 	i = 0;
 	x = 0;
+	while (new_map[i] != '#')
+		i++;
+	if (i == 0)
+		return;
+	if (new_map[i + 4] == '#')
+		x = 1;
+	while (new_map[j])
+	{
+		if (new_map[j] == '#')
+		{
+			new_map[j - i + x] = new_map[j];
+			new_map[j] = '.';
+		}
+		j++;
+	}
 }
 
-int		found_best(t_tetri *tetris, char *new_map, int i)
+void	check_tetri(char *new_map, char *map)
 {
-	new_map = tetris->tetrimi[i];
-	ft_putstr(new_map);
+	int	i;
+
+	i = 0;
+	if (check_len(new_map) == 4)
+		pose_up_left(new_map, map);
+	else
+		return;
+}
+
+int		found_best(char *new_map, char *map)
+{
 	move_tetri(new_map);
-	ft_putstr(new_map);
+	check_tetri(new_map, map);
 	return (1);
 }
