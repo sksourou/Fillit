@@ -12,28 +12,79 @@
 
 #include "fillit.h"
 
-int		count_tetri(char *map)
+void	delete_tetri(char *map)
 {
-	int i;
-	int j;
-	int ct;
+	int	i;
 
 	i = 0;
-	ct = 21;
-	j = 0;
-	while(map[i])
+	while (map[i])
 	{
-		if (i == ct)
-		{
-			j++;
-			ct += 21;
-		}
+		if (map[i] == '#')
+			map[i] = '.';
 		i++;
 	}
-	return (j + 1);
 }
 
-char	*change_diez(char *new_map, char Alph)
+int		isupper(char c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}
+
+int		len_tetri(char *new_map)
+{
+	int	i;
+	int	x;
+	int	n;
+
+	n = 0;
+	x = 0;
+	i = 0;
+	while (new_map[i])
+	{
+		if (new_map[i] == '#')
+		{
+			while (new_map[i] == '#')
+			{
+				i++;
+				x++;
+			}
+		}
+		if (x > n)
+			n = x;
+		i++;
+	}
+	return (n);
+}
+
+int check_alph(char *map, char alph)
+{
+	while(*map)
+	{
+		if (*map == alph)
+			return (1);
+		map++;
+	}
+	return (0);
+}
+
+void	change_first_map(char *map)
+{
+	int	k;
+
+	k = 0;
+	while (map[k])
+	{
+		if (map[k] == '#')
+		{
+			map[k] = 'A';
+		}
+		k++;
+	}
+}
+
+int		change_diez(char *new_map, char Alph)
 {
 	int k;
 
@@ -41,8 +92,10 @@ char	*change_diez(char *new_map, char Alph)
 	while (new_map[k])
 	{
 		if (new_map[k] == '#')
+		{
 			new_map[k] = Alph;
+		}
 		k++;
 	}
-	return (new_map);
+	return (0);
 }

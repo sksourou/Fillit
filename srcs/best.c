@@ -14,28 +14,19 @@
 
 int 	check_len(char *new_map)
 {
-	int	j;
-	int	x;
 	int	i;
 
 	i = 0;
-	x = 0;
-	j = i;
-	while (new_map[j] == '#')
-		j++;
-	x = j - i;
-	j = 0;
-	while (new_map[i] == '#')
+	while (new_map[i])
 	{
-		i += 5;
-		j++;
+		if (new_map[i] == '\n')
+			return (i);
+		i++;
 	}
-	if (x + j == 3)
-		return (3);
-	return ((x > j) ? x : j);
+	return (0);
 }
 
-void	move_tetri(char *new_map)
+char	*move_tetri(char *new_map)
 {
 	int i;
 	int	j;
@@ -47,7 +38,7 @@ void	move_tetri(char *new_map)
 	while (new_map[i] != '#')
 		i++;
 	if (i == 0)
-		return;
+		return (NULL);
 	if (new_map[i + 4] == '#')
 		x = 1;
 	while (new_map[j])
@@ -59,6 +50,7 @@ void	move_tetri(char *new_map)
 		}
 		j++;
 	}
+	return (new_map);
 }
 
 void	check_tetri(char *new_map, char *map)
@@ -74,7 +66,14 @@ void	check_tetri(char *new_map, char *map)
 
 int		found_best(char *new_map, char *map)
 {
+	static char alph = 'A';
+
+	alph++;
 	move_tetri(new_map);
+	change_first_map(map);
 	check_tetri(new_map, map);
+	change_diez(map, alph);
+	printf("--New_map--\n%s", new_map);
+	printf("--Map--\n%s", map);
 	return (1);
 }

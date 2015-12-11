@@ -17,7 +17,7 @@ int		char_cmp(char *map, int i, int x, int n)
 {
 	if (map[x + i + n] == '.')
 	{
-		map[x + i + n] = 'W';
+		map[x + i + n] = '#';
 		return (1);
 	}
 	return (0);
@@ -26,25 +26,21 @@ int		char_cmp(char *map, int i, int x, int n)
 int		verif_tetri(char *map)
 {
 	int	i;
-	int	j;
+	int	n;
 
+	n = 0;
 	i = 1;
 	while (map[i])
 	{
-		if (map[i] == 'W' && map[i + 1] == '\n' && map[i + 2] == 'W')
+		if (map[i] == '#' && map[i + 1] == '\n' && map[i + 2] == '#')
 		{
 			i = 0;
 			break;
 		}
 		i++;
 	}
-	j = 0;
-	while (map[j] && i == 0)
-	{
-		if (map[j] == 'W')
-			map[j] = '.';
-		j++;
-	}
+	if (i == 0)
+		delete_tetri(map);
 	return ((i == 0) ? 0 : 1);
 }
 
@@ -61,7 +57,8 @@ int		tetri_cmp(char *new_map, char *map, int n)
 		{
 			if (char_cmp(map, j, x, n) == 0)
 			{
-				j--;
+				delete_tetri(map);
+				j = -1;
 				x++;
 			}
 		}
@@ -82,14 +79,10 @@ void	pose_up_left(char *new_map, char *map)
 	int	n;
 
 	n = 0;
- 	if (check_len(new_map) >= check_len(map))
+ 	if (check_len(new_map) > check_len(map))
  	{
  		map = add_new_space(map);
  		move_tetri(map);
  	}
- 	printf("--New_map--\n%s", new_map);
-	printf("--Map--\n%s", map);
 	tetri_cmp(new_map, map, n);
-  	printf("--New_map--\n%s", new_map);
-	printf("--Map--\n%s", map);
 }

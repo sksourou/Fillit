@@ -12,6 +12,27 @@
 
 #include "fillit.h"
 
+int		count_tetri(char *map)
+{
+	int i;
+	int j;
+	int ct;
+
+	i = 0;
+	ct = 21;
+	j = 0;
+	while(map[i])
+	{
+		if (i == ct)
+		{
+			j++;
+			ct += 21;
+		}
+		i++;
+	}
+	return (j + 1);
+}
+
 int 	first_line(char *new_line)
 {
 	int i;
@@ -62,10 +83,8 @@ void	algo(t_tetri tetris)
 {
 	char *map;
 	char *new_map;
-	char alph;
 	int i;
 
-	alph = 'A';
 	map = tetris.tetrimi[0];
 	move_tetri(map);
 	i = 1;
