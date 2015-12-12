@@ -26,6 +26,8 @@ typedef struct s_tetri
 	char		**tetrimi;
 }				t_tetri;
 
+
+char	*move_map(char *new_map);
 int		check_alph(char *map, char alph);
 void	change_first_map(char *map);
 void	delete_tetri(char *map);

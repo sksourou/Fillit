@@ -39,11 +39,40 @@ char	*move_tetri(char *new_map)
 		i++;
 	if (i == 0)
 		return (NULL);
-	if (new_map[i + 4] == '#')
+	if (new_map[i + 4] == '#' || new_map[i + 9] == '#')
+		x = 1;
+	if (x == 1 && i == 1)
+		return (NULL);
+	while (new_map[j])
+	{
+		if (new_map[j] == '#' && new_map[j] != '\n')
+		{
+			new_map[j - i + x] = new_map[j];
+			new_map[j] = '.';
+		}
+		j++;
+	}
+	return (new_map);
+}
+
+char	*move_map(char *new_map)
+{
+	int i;
+	int	j;
+	int x;
+
+	j = 0;
+	i = 0;
+	x = 0;
+	while (isupper(new_map[i]) == 0)
+		i++;
+	if (i == 0)
+		return (NULL);
+	if (isupper(new_map[i + 4]) == 1)
 		x = 1;
 	while (new_map[j])
 	{
-		if (new_map[j] == '#')
+		if (isupper(new_map[j]) == 1)
 		{
 			new_map[j - i + x] = new_map[j];
 			new_map[j] = '.';
@@ -73,7 +102,11 @@ int		found_best(char *new_map, char *map)
 	change_first_map(map);
 	check_tetri(new_map, map);
 	change_diez(map, alph);
-	printf("--New_map--\n%s", new_map);
+	if (check_alph(map, alph) == 0)
+	{
+		alph--;
+		return (0);
+	}
 	printf("--Map--\n%s", map);
 	return (1);
 }

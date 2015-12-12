@@ -40,7 +40,9 @@ int		verif_tetri(char *map)
 		i++;
 	}
 	if (i == 0)
+	{
 		delete_tetri(map);
+	}
 	return ((i == 0) ? 0 : 1);
 }
 
@@ -62,7 +64,7 @@ int		tetri_cmp(char *new_map, char *map, int n)
 				x++;
 			}
 		}
-		else if (new_map[j] == '\n')
+		if (new_map[j] == '\n' && check_len(map) == 5)
 			x++;
 		j++;
 	}

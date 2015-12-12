@@ -90,9 +90,13 @@ void	algo(t_tetri tetris)
 	i = 1;
 	while (i < tetris.nbr_tetri)
 	{
+		ft_putstr(tetris.tetrimi[i]);
 		new_map = tetris.tetrimi[i];
 		if (found_best(new_map, map) != 1)
-			;
+		{
+			map = add_new_space(map);
+			map = move_map(map);
+		}
 		else
 			i++;
 	}
