@@ -17,7 +17,6 @@ void	delete_tetri(char *map)
 	int	i;
 
 	i = 0;
-	//ft_putstr(map);
 	while (map[i])
 	{
 		if (map[i] == '#')

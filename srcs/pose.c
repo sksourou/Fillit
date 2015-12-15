@@ -12,9 +12,26 @@
 
 #include "fillit.h"
 
+int		good_tetri(char *map, char alph)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (map[i])
+	{
+		if (map[i] == alph)
+			j++;
+		i++;
+	}
+	return (j);
+}
 
 int		char_cmp(char *map, int i, int x, int n)
 {
+	if (map[x + i + n] == '\0')
+		return (1);
 	if (map[x + i + n] == '.')
 	{
 		map[x + i + n] = '#';
@@ -64,8 +81,8 @@ int		tetri_cmp(char *new_map, char *map, int n)
 				x++;
 			}
 		}
-		if (new_map[j] == '\n' && check_len(map) == 5)
-			x++;
+		if (new_map[j] == '\n' && check_len(map) > 4)
+			x += (check_len(map) - 4);
 		j++;
 	}
 	if (verif_tetri(map) == 0)
