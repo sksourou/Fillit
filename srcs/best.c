@@ -126,6 +126,6 @@ int		found_best(char *new_map, char *map)
 		alph--;
 		return (0);
 	}
-	printf("--Map--\n%s", map);
+	//printf("--Map--\n%s", map);
 	return (1);
 }

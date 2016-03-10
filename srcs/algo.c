@@ -79,6 +79,17 @@ char 	*add_new_space(char *new_map)
 	return(n_map);
 }
 
+void		display(char *map)
+{
+	int i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	if ((map[i - 1] == '\n') && (map[i - 2] == '\n'))
+		map[i - 1] = '\0';
+}
+
 void	algo(t_tetri tetris)
 {
 	char *map;
@@ -90,7 +101,6 @@ void	algo(t_tetri tetris)
 	i = 1;
 	while (i < tetris.nbr_tetri)
 	{
-		//ft_putstr(tetris.tetrimi[i]);
 		new_map = tetris.tetrimi[i];
 		if (found_best(new_map, map) != 1)
 		{
@@ -100,4 +110,6 @@ void	algo(t_tetri tetris)
 		else
 			i++;
 	}
+	display(map);
+	printf("--Map--\n%s", map);
 }
